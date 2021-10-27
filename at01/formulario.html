@@ -1,0 +1,122 @@
+<html>
+    <head> 
+	    <meta charset="utf-8">
+		<title>Página para o cadastro na olimpiada</title> 	
+	</head>
+	<body>
+	
+	<form action="resultado.html" method="POST">
+	
+	   <table>
+         <tr> 
+             <td> Nome </td>
+             <td><input type="text" name="nome"/></td>			 
+		 </tr>
+		 <tr> 
+             <td> Email </td>
+             <td><input type="email" name="email"/></td>			 
+		 </tr>
+		 <tr> 
+             <td> Senha </td>
+             <td><input type="password" name="senha"/></td>			 
+		 </tr>
+		 <tr>
+	        <td>Modalidade:</td>
+	        <td>
+	          <select name="modalidade" >
+	            <option value="calculo">Calculo</option>
+	            <option value="programacaoo">Programacao</option>
+	            <option value="fisica">Fsica</option>
+	            <option value="xadrez">Xadrez</option>
+	          </select>
+	        </td>
+		      </tr>
+		 <tr>
+	        <td>Linguagens:</td>
+	        <td>
+	          <input type="checkbox" id="Python" name="Python" value="Python">
+	          <label for="Python">Python</label>
+	        </td>
+	     </tr>
+	     <tr>
+	        <td></td>
+	        <td>
+	          <input type="checkbox" id="Shell_Script" name="Shell_Script" value="Shell_Script">
+	          <label for="Shell_Script">Shell Script</label>
+	        </td>
+	     </tr>
+	     <tr>
+	        <td></td>
+	        <td>
+	          <input type="checkbox" id="Java_Script" name="Java_Script" value="Java_Script">
+	          <label for="Java_Script">Java Script</label>
+	        </td>
+	     </tr>
+	     <tr>
+	        <td></td>
+	        <td>
+	          <input type="checkbox" id="C" name="C" value="C">
+	          <label for="C">C</label>
+	        </td>
+	     </tr>
+	     <tr>
+	      <tr>
+	        <td></td>
+	        <td>
+	          <input type="checkbox" id="Java" name="Java" value="Java">
+	          <label for="Java">Java</label>
+	        </td>
+	     </tr>
+	     <tr>
+	     	<tr>
+	        <td></td>
+	        <td>
+	          <input type="checkbox" id="R" name="R" value="R">
+	          <label for="R">R</label>
+	        </td>
+	      </tr>
+	      <tr>
+	      <tr>
+	        <td>Escolha o periodo:</td>
+	        <td>
+	          <input type="radio" id="manha" name="manha" value="manha">
+	          <label for="manha">Manha</label>
+	        </td>
+	      </tr>
+	      <tr>
+	        <td></td>
+	        <td>
+	          <input type="radio" id="tarde" name="tarde" value="tarde">
+	          <label for="tarde">Tarde</label>
+	        </td>
+	      </tr>
+	      <tr>
+	        <td></td>
+	        <td>
+	          <input type="radio" id="noite" name="noite" value="noite">
+	          <label for="noite">Noite</label>
+	        </td>
+	      </tr>
+	      <tr>
+	        <td>Apresentacao:</td>
+	        <td></td>
+	      </tr>
+	      <tr>
+	        <td></td>
+	        <td>
+	          <textarea name="apresetacao" id="apresetacao" cols="40" rows="15" ></textarea>
+	        </td>
+	      </tr>
+	      <tr>
+	        <td></td>
+	        <td>
+	          <button type="submit">Enviar</button>
+	        </td>
+	      </tr>
+
+
+	   </table>
+	</form>
+	
+	</body>
+</html>
