@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Oswald', sans-serif;
+            background-color: lightgray;
+        }
+        h2{
+            display: flex;
+            align-items: center;
+            flex-direction: row;  
+            justify-content: center;
+            font-size:3em;
+        }
+        h3{
+            display: flex;
+            align-items: center;
+            flex-direction: row;  
+            justify-content: center;
+            font-size:1.5em;
+        }
+
+        .cabecalho {
+            background: #333;
+            border-bottom: solid 5px #4faddb;
+            height: 80px;
+            box-sizing: content-box;
+        }
+
+        .logo {
+            display: inline-block;
+            height: 80px;
+            padding: 15px;
+        }
+
+        .logo img {
+            height: 100%;
+        }
+
+        .menu-toggle {
+            float: right;
+            color: #eee;
+            background-color: #555;
+            border: solid 1px #777;
+            border-radius: 5px;
+            height: 40px;
+            padding: 10px 20px;
+            margin: 20px 15px;
+        }
+
+        .menu {
+            display: inline-block;
+            vertical-align: top;
+            height: 80px;
+            padding: 25px;
+        }
+
+        .menu ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            display: inline-block;
+        }
+
+        .cabecalho a {
+            text-decoration: none;
+            color: #eee;
+            font-size: 1.3em;
+        }
+
+        .menu a {
+            padding: 15px;
+        }
+
+        .autenticacao {
+            float: right;
+            height: 80px;
+            padding: 25px;
+        }
+
+        .menu a:hover,
+        .menu a.selected {
+            background-color: #4faddb;
+            color: #000;
+        }
+
+        .botao {
+            border-radius: 30px;
+            padding: 10px 25px;
+            margin: 10px;
+        }
+        .botaoenviar {
+            border-radius: 30px;
+            padding: 10px 25px;
+            margin: 100px;
+            margin-top: 10px;
+            background: #f50a31;
+            color: #fff;
+        }
+
+        .destaque {
+            background: #f50a31;
+            color: #fff;
+        }
+        .banner {
+            background-size: 500px 150px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;  
+            justify-content: center;
+                    }
+
+        .cadastro{
+            display: flex;
+            align-items: center;
+            flex-direction: column;  
+            justify-content: center;
+        }
+
+        .cadastro input {
+			width: 200px;
+			height: 30px;
+			background-color: #f2f2f2;
+			padding: 3px;
+			border: 1px solid #ccc;
+			color: #333;
+			border-radius: 5px;
+		}
+
+		.cadastro input[type=checkbox] {
+			border-radius: 5px;
+			border: 1px solid #333;
+			background-color: Teal;
+			color: #fff;
+			height: 15px;
+			width: 46px;
+		}
+
+		.cadastro input[type=radio] {
+			border-radius: 5px;
+			border: 1px solid #333;
+			background-color: Teal;
+			color: #fff;
+			height: 15px;
+			width: 46px;
+		}
+		.cadastro textarea {
+			width: 300px;
+			height: 200px;
+			border-radius: 5px;
+
+		}
+
+        .regras h3{
+            font-size:1.5em;
+        }
+
+        @media(min-width: 679px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        @media(max-width: 680px) {
+            .menu {
+                display: none;
+            }
+        }
+
+        @media(max-width: 910px) {
+            .autenticacao {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="OlimpiadaProgramacao.html">Inicio</a>
+                </li>
+               
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+    <main>
+        <h2>Cadastro</h2>
+	     <div class="cadastro">
+	        <form action="resultado.html" method="POST">
+		
+			   <table>
+		         <tr> 
+		             <td> Nome </td>
+		             <td><input type="text" name="nome"/></td>			 
+				 </tr>
+				 <tr> 
+		             <td> Email </td>
+		             <td><input type="email" name="email"/></td>			 
+				 </tr>
+				 <tr> 
+		             <td> Senha </td>
+		             <td><input type="password" name="senha"/></td>			 
+				 </tr>
+				 <tr>
+			        <td>Modalidade:</td>
+			        <td>
+			          <select name="modalidade" >
+			            <option value="calculo">Calculo</option>
+			            <option value="programacaoo">Programacao</option>
+			            <option value="fisica">Fsica</option>
+			            <option value="xadrez">Xadrez</option>
+			          </select>
+			        </td>
+				      </tr>
+				 <tr>
+			        <td>Linguagens:</td>
+			        <td>
+			          <input type="checkbox" id="Python" name="Python" value="Python">
+			          <label for="Python">Python</label>
+			        </td>
+			     </tr>
+			     <tr>
+			        <td></td>
+			        <td>
+			          <input type="checkbox" id="Shell_Script" name="Shell_Script" value="Shell_Script">
+			          <label for="Shell_Script">Shell Script</label>
+			        </td>
+			     </tr>
+			     <tr>
+			        <td></td>
+			        <td>
+			          <input type="checkbox" id="Java_Script" name="Java_Script" value="Java_Script">
+			          <label for="Java_Script">Java Script</label>
+			        </td>
+			     </tr>
+			     <tr>
+			        <td></td>
+			        <td>
+			          <input type="checkbox" id="C" name="C" value="C">
+			          <label for="C">C</label>
+			        </td>
+			     </tr>
+			     <tr>
+			      <tr>
+			        <td></td>
+			        <td>
+			          <input type="checkbox" id="Java" name="Java" value="Java">
+			          <label for="Java">Java</label>
+			        </td>
+			     </tr>
+			     <tr>
+			     	<tr>
+			        <td></td>
+			        <td>
+			          <input type="checkbox" id="R" name="R" value="R">
+			          <label for="R">R</label>
+			        </td>
+			      </tr>
+			      <tr>
+			      <tr>
+			        <td>Escolha o periodo:</td>
+			        <td>
+			          <input type="radio" id="manha" name="manha" value="manha">
+			          <label for="manha">Manha</label>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td></td>
+			        <td>
+			          <input type="radio" id="tarde" name="tarde" value="tarde">
+			          <label for="tarde">Tarde</label>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td></td>
+			        <td>
+			          <input type="radio" id="noite" name="noite" value="noite">
+			          <label for="noite">Noite</label>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td>Apresentacao:</td>
+			        <td></td>
+			      </tr>
+			      <tr>
+			        <td></td>
+			        <td>
+			          <textarea name="apresetacao" id="apresetacao" cols="40" rows="15" ></textarea>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td></td>
+			        <td>
+			          <button type="submit" class="botaoenviar">Enviar</button>
+			        </td>
+			      </tr>
+			      
+
+
+			   </table>
+			</form>
+        </div>
+        
+        
+        
+    </main>
+
+    
+</body>
+
+</html>

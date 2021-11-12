@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Card</title>
+    <style type="text/css">
+    	body{
+    		background-color:   #808080;
+    	}
+    	h1{
+            display: flex;
+            align-items: center;
+            flex-direction: row;  
+            justify-content: center;
+            font-size:3em;
+            color:   #DCDCDC;
+
+        }
+    	.card{
+    		width: 600px;
+            display: grid;
+			grid-template-columns: 2fr 2fr;
+			row-gap: 60px;
+			justify-content: center;
+			align-items: center;
+        }
+        .card img {
+			margin-top: 5px;
+			margin-bottom: 10px;
+			height: 60px;
+			width: 60px;
+		}
+        .cardunico{
+        	margin: 10px;
+            width: 15em;
+            height: 15em;
+            border-radius: 10px;
+            background-color:   #DCDCDC;
+            display: flex;
+            align-items: center;
+            flex-direction: column;  
+            justify-content: center;
+     
+        }
+        .cardprincipal{
+			align-items: center;
+		    display: grid;
+		    justify-content: center;
+		    margin: 0 auto;
+		    width: 500px;
+        }
+       
+    </style>
+    
+</head>
+
+<body>
+    <h1>Card</h1>
+
+    <div class="cardprincipal">
+    	<div class="card">
+	    	<div class="cardunico">
+	    		<h4>Linguagem: Java</h4>
+		    	<img src="img/java.jpg" >
+		    	<h4>IDE: Eclipse</h4>
+		    	<img src="img/eclipse.jpeg" >
+	    	</div>
+	    	<div class="cardunico">
+	    		<h4>Linguagem: C</h4>
+		    	<img src="img/c.jpg" >
+		    	<h4>IDE: Dev C++</h4>
+		    	<img src="img/devc.png" >
+	    	</div>
+	    </div>
+	    <div class="card">
+	    	<div class="cardunico">
+	    		<h4>Linguagem: Python</h4>
+		    	<img src="img/python.jfif" >
+		    	<h4>IDE: PyCharm</h4>
+		    	<img src="img/py.png" >
+	    	</div>
+	    	<div class="cardunico">
+	    		<h4>Linguagem: Java Script</h4>
+		    	<img src="img/javas.png" >
+		    	<h4>IDE: Eclipse</h4>
+		    	<img src="img/vscode.jpg" >
+	    	</div>
+	    </div>
+    	
+    </div>
+    
+  
+
+   
+</body>
+
+</html>
