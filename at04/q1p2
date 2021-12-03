@@ -3,11 +3,6 @@ class Aluno{
         this.nome = []
         this.matricula = []
         this.curso = []
-        this.nota1 = []
-        this.nota2 = []
-        this.nota3 = []
-        this.dadosAluno = []
-        this.media = []
     }
     inserirAluno(nome, matricula,curso,nota1,nota2,nota3){
         this.nome.push(nome)
@@ -26,7 +21,7 @@ class Aluno{
 
 cond = 0
 aluno = new Aluno()
-while(cond<2){
+while(cond<5){
     console.log("Insira os dados dos alunos")
     
     nome = prompt('Qual o nome desse aluno? ')
