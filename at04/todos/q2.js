@@ -1,7 +1,3 @@
-/*2) Crie uma estrutura representando os alunos de um determinado curso. A estrutura
-deve conter a matrícula do aluno, nome, nota da primeira prova, nota da segunda
-prova e nota da terceira prova.
-*/
 class Aluno{
     constructor(){
         this.nome = []

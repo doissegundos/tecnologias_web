@@ -1,10 +1,3 @@
-/*3) Faça um programa que leia os dados de 10 alunos (Nome, matricula, Media Final),
-armazenando em um vetor. Uma vez lidos os dados, divida estes dados em 2 novos
-vetores, o vetor dos aprovados e o vetor dos reprovados, considerando a média
-mínima para a aprovação como sendo 5.0. Exibir na tela os dados do vetor de
-aprovados, seguido dos dados do vetor de reprovados.
-*/
-
 class Aluno{
     constructor(){
         this.nome = []
@@ -33,7 +26,7 @@ class Aluno{
 
 cond = 0
 aluno = new Aluno()
-while(cond<10){
+while(cond<2){
     console.log("Insira os dados dos alunos")
     
     nome = prompt('Qual o nome desse aluno? ')

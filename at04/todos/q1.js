@@ -4,6 +4,8 @@ usuário informação de 5 alunos, armazene em vetor dessa estrutura e imprima o
 dados na tela.
 */
 
+const prompt = require('prompt-sync')();
+
 class Aluno{
     constructor(nome, matricula,curso){
         this.nome = nome
@@ -12,21 +14,23 @@ class Aluno{
         this.dadosAluno = [this.nome,this.matricula,this.curso]
     }
 
+
     exibeAlunos(){
-        console.log(this.dadosAluno)
-               
+        for(let i =0; i <= this.dadosAluno.length; i++){
+            console.log('Aluno:\n Nome: ${this.dadosAluno[i][0]} Matricula: ${this.dadosAluno[i][1]} Curso: ${this.dadosAluno[i][2]}')
+        }
+        
     }
 }
 
-cond = 0
-while(cond<5){
+cond = 1
+while(cond<=5){
     console.log("Insira os dados dos alunos")
     
     nome = prompt('Qual o nome desse aluno? ')
     matricula = prompt('Qual o matricula desse aluno? ')
     curso = prompt('Qual o curso desse aluno? ')
+    console.log(cond)
 
-    aluno = new Aluno(nome,matricula,curso)
-    aluno.exibeAlunos()
-    cond++
 }
+
