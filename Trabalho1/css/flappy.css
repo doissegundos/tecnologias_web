@@ -1,0 +1,132 @@
+@font-face {
+    font-family: 'Oswald';
+    src: url('fonts/Oswald-Regular.ttf') format('truetype');
+    font-family: 'Pixel';
+    src: url("fontes/Pixel.ttf");
+}
+
+* {
+    font-family: 'Oswald', sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #0D262D;
+    color: #fff;
+    height: 100%;
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    background-color: #0D262D;
+}
+
+
+[wm-flappy] {
+    position: relative;
+    border: 5px solid dodgerblue;
+    height: 700px;
+    width: 1200px;
+    margin: 15px;
+    background-color: deepskyblue;
+    overflow: hidden;
+}
+
+.passaro {
+    position: absolute;
+    width: 60px;
+    left: calc(50% - 30px);
+}
+
+.par-de-barreiras {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.barreira {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.barreira .borda {
+    height: 30px;
+    width: 130px;
+    background: linear-gradient(90deg, #639301, #A5E82E);
+    border: 2px solid #000;
+}
+
+.barreira .corpo {
+    height: 40px;
+    width: 110px;
+    background: linear-gradient(90deg, #639301, #A5E82E);
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+}
+
+.progresso {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: Pixel;
+    font-size: 70px;
+    z-index: 100;
+}
+
+.form-bootstrapp {
+    background-size: 500px 150px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;  
+    justify-content: center;
+}
+.form-bootstrap{
+    display: flex;
+    align-items: center;
+    flex-direction: column;  
+    justify-content: center;
+    color: #0D262D;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    background-color: #696969;
+}
+.form-group{
+    color: #fff;
+}
+label{
+    color: #0D262D;
+}
+
+.label-titulo{
+    font-style: oblique;
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.titulo{
+    font-style: oblique;
+    font-weight: bold;
+    font-size: 3em;
+}
+
+.botao-iniciar{
+    color: #0D262D;
+    font-style: oblique;
+}

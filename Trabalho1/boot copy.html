@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/flappy.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Olá, mundo!</title>
+  </head>
+  <body class="conteudo">
+    <div class="form-bootstrap">
+      <h1 class="titulo">Configurações do jogo</h1>
+        <form>
+            <div class="form-group">
+              <label for="nome" class="label-titulo">Nome do jogador</label>
+              <input class="form-control" id="nome" type="text" placeholder="ex. Stefane">
+            </div>
+
+            <div class="form-group">
+              <label for="cenario-jogo" class="label-titulo">Cenário do jogo</label>
+              <div class="form-group" id="cenario-jogo">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="noturno">
+                  <label class="form-check-label" for="inlineRadio1">Noturno</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="diurno">
+                  <label class="form-check-label" for="inlineRadio2">Diurno</label>
+                </div>
+              </div>              
+            </div>
+
+            <div class="form-group">
+              <label for="intervalo-abertura" class="label-titulo">Intervalo de abertura entre os canos</label>
+              <div class="form-group" id="intervalo-abertura">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="facil">
+                  <label class="form-check-label" for="inlineRadio1">Facil</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="medio">
+                  <label class="form-check-label" for="inlineRadio2">Medio</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="dificil">
+                  <label class="form-check-label" for="inlineRadio2">Dificil</label>
+                </div>
+              </div>              
+            </div>
+
+            <div class="form-group">
+              <label for="distancia-canos" class="label-titulo">Distancia entre os canos</label>
+              <div class="form-group" id="distancia-canos">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="facil">
+                  <label class="form-check-label" for="inlineRadio1">Facil</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="medio">
+                  <label class="form-check-label" for="inlineRadio2">Medio</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="dificil">
+                  <label class="form-check-label" for="inlineRadio2">Dificil</label>
+                </div>
+              </div>              
+            </div>
+
+            <div class="form-group">
+              <label for="velocidade-jogo" class="label-titulo">Velocidade do jogo</label>
+              <input class="form-control" id="velocidade-jogo" type="text" placeholder="ex. Stefane">
+            </div>
+
+            <div class="form-group">
+              <label for="personagens">Estado</label>
+              <select id="personagens" class="form-control">
+                <option selected>Personagem 1</option>
+                <option selected>Personagem 2</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="velocidade-personagem" class="label-titulo">Velocidade do personagem</label>
+              <div class="form-group" id="velocidade-personagem">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="baixa">
+                  <label class="form-check-label" for="inlineRadio1">Baixa</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="media">
+                  <label class="form-check-label" for="inlineRadio2">Media</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="rapida">
+                  <label class="form-check-label" for="inlineRadio2">Rapida</label>
+                </div>
+              </div>              
+            </div>
+
+            <div class="form-group">
+              <label for="pontuacao" class="label-titulo" >Pontuação</label>
+              <div class="form-group" id="pontuacao">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1">
+                  <label class="form-check-label" for="inlineRadio1">Baixa</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao10">
+                  <label class="form-check-label" for="inlineRadio2">Media</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao100">
+                  <label class="form-check-label" for="inlineRadio2">Rapida</label>
+                </div>
+              </div>              
+            </div>
+
+            <div class="form-group">
+              <label for="tipo-jogo" class="label-titulo">Distancia entre os canos</label>
+              <div class="form-group" id="tipo-jogo">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="treino">
+                  <label class="form-check-label" for="inlineRadio1">Treino</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="real">
+                  <label class="form-check-label" for="inlineRadio2">Real</label>
+                </div>
+                </div>
+              </div>              
+              <button type="submit" class="btn btn-warning botao-iniciar">Iniciar Jogo !!</button>
+            </div>
+                        
+
+            
+          </form>
+
+        
+
+
+    </div>
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
