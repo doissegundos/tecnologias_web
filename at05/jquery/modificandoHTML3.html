@@ -27,13 +27,12 @@
         $('table').append('<tr></tr>')
         $('tr').append('<th>Nome do Aluno</th>')
         $('tr').append('<th>Nota do Aluno</th>')
-
-
-        pessoas.forEach((pessoas, indice_pessoa) => {
+        
+        for(let indice_pessoa = 0; indice_pessoa < pessoas.length; indice_pessoa++){
             $('table').append(`<tr id=${indice_pessoa}></tr>`)
-            $(`tr[id=${indice_pessoa}]`).append(`<td>${pessoas.nome}</td>`)
-            $(`tr[id=${indice_pessoa}]`).append(`<td>${pessoas.nota}</td>`)
-        })
+            $(`tr[id=${indice_pessoa}]`).append(`<td>${pessoas[indice_pessoa].nome}</td>`)
+            $(`tr[id=${indice_pessoa}]`).append(`<td>${pessoas[indice_pessoa].nota}</td>`)
+        }
         
     </script>
 </body>
