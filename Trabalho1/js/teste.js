@@ -200,6 +200,16 @@ function colidiu(passaro, barreiras) {
     }
 }
 
+const configuracoesJogo = {
+    nome: "",
+    velocidadeJogo: 2,
+    personagens: "personagem1",
+    cenarioJogoValue:"diurno",
+    aberturaCanosValue: "facil",
+    velocidadePersonagemValue: "baixa",
+    pontuacaoValue: "1",
+    tipoJogoValue: "treino"
+}
 
 function selecionaValue(nameForm){
     let nameFormValue;
@@ -218,29 +228,29 @@ const btn = document.querySelector('#botao');
 btn.onclick = function (event) {
 
     event.preventDefault()
-    nome = document.querySelector("#nome").value
-    velocidadeJogo = document.querySelector("#velocidadeJogo").value
-    personagens = document.querySelector("#personagens").value
+    configuracoesJogo.nome = document.querySelector("#nome").value
+    configuracoesJogo.velocidadeJogo = document.querySelector("#velocidadeJogo").value
+    configuracoesJogo.personagens = document.querySelector("#personagens").value
 
     const cenarioJogo = document.querySelectorAll('input[name="cenarioJogo"]');
-    let cenarioJogoValue = selecionaValue(cenarioJogo)
+    configuracoesJogo.cenarioJogoValue = selecionaValue(cenarioJogo)
 
     const aberturaCanos = document.querySelectorAll('input[name="aberturaCanos"]');
-    let aberturaCanosValue = selecionaValue(aberturaCanos)
+    configuracoesJogo.aberturaCanosValue = selecionaValue(aberturaCanos)
 
     const distanciaCanos = document.querySelectorAll('input[name="distacniaCanos"]');
-    let distanciaCanosValue = selecionaValue(distanciaCanos)
+    configuracoesJogo.distanciaCanosValue = selecionaValue(distanciaCanos)
 
     const velocidadePersonagem = document.querySelectorAll('input[name="velocidadePersonagem"]');
-    let velocidadePersonagemValue = selecionaValue(velocidadePersonagem)
+    configuracoesJogo.velocidadePersonagemValue = selecionaValue(velocidadePersonagem)
 
     const pontuacao = document.querySelectorAll('input[name="pontuacao"]');
-    let pontuacaoValue = selecionaValue(pontuacao)
+    configuracoesJogo.pontuacaoValue = selecionaValue(pontuacao)
 
     const tipoJogo = document.querySelectorAll('input[name="tipoJogo"]');
-    let tipoJogoValue = selecionaValue(tipoJogo)
+    configuracoesJogo.tipoJogoValue = selecionaValue(tipoJogo)
 
-    alert(tipoJogoValue)
+    alert(configuracoesJogo.tipoJogoValue)
     document.querySelector("#insert_form").style.display = "none"
     document.querySelector("[wm-flappy]").style.display = "block"
 
