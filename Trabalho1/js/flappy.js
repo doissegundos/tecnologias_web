@@ -15,9 +15,9 @@ function Barreira(reversa = false) {
 
 }
 
-/* const b= new Barreira(false)
-b.setAltura(500)
-document.querySelector('[wm-flappy]').appendChild(b.elemento) */  
+/*const b= new Barreira(false)
+b.setAltura(1000)
+document.querySelector('[wm-flappy]').appendChild(b.elemento) */ 
 
 
 
@@ -44,8 +44,10 @@ function ParDeBarreiras(altura, abertura, popsicaoNaTela) {
     this.setX(popsicaoNaTela)
 } 
 
-/* const b= new ParDeBarreiras(500,300,1000)
-document.querySelector('[wm-flappy]').appendChild(b.elemento)  */
+/*
+Altera a posição das barreiras e o tamanho
+const b= new ParDeBarreiras(700,300,400)
+document.querySelector('[wm-flappy]').appendChild(b.elemento) */
 
 function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
     this.pares = [
@@ -74,7 +76,7 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
     }
 }
 
-/* const barreiras = new Barreiras(700, 400, 200, 400)
+/*const barreiras = new Barreiras(700, 400, 200, 400)
 const areaDoJogo = document.querySelector('[wm-flappy]')
 
 barreiras.pares.forEach( par => areaDoJogo.appendChild(par.elemento)) 
@@ -195,4 +197,4 @@ function colidiu(passaro, barreiras) {
         }, 20)
     }
 }
- new FlappyBird().start() 
+ //new FlappyBird().start() 
