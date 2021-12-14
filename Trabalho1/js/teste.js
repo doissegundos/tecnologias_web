@@ -101,7 +101,7 @@ function Passaro(alturaJogo) {
     window.onkeyup = e => voando = false
 
     this.animar = () => {
-        const novoY = this.getY() + (voando ? 8 : -5)
+        const novoY = this.getY() + (voando ? configuracoes.velocidadeSubir : configuracoes.velocidadeDescer)
         const alturaMaxima = alturaJogo - this.elemento.clientWidth
 
         if (novoY <= 0) {
@@ -168,6 +168,7 @@ function colidiu(passaro, barreiras) {
                 || estaoSobrepostos(passaro.elemento, inferior)
         }
     })
+
     return colidiu
 
 }
@@ -180,7 +181,7 @@ function colidiu(passaro, barreiras) {
 
     const progresso = new Progresso()
     const barreiras = new Barreiras(altura, largura, configuracoes.aberturaCanos, configuracoes.distanciaCanos,
-        () => progresso.atualizarPontos(++pontos))
+        () => progresso.atualizarPontos(pontos+=configuracoes.pontuacao))
 
     const passaro = new Passaro(altura)
 
@@ -194,6 +195,7 @@ function colidiu(passaro, barreiras) {
             passaro.animar()
 
               if(colidiu(passaro,barreiras)){
+                 alert("O Jogador "+ configuracoesJogo.nome +" fez "+pontos+ " pontos")
                  clearInterval(temporizador) 
              } 
         }, 20)
@@ -207,7 +209,7 @@ const configuracoesJogo = {
     cenarioJogoValue:"diurno",
     aberturaCanosValue: "facil",
     velocidadePersonagemValue: "baixa",
-    pontuacaoValue: "1",
+    pontuacaoValue: 1,
     tipoJogoValue: "treino"
 }
 
@@ -219,9 +221,12 @@ function cenarioJogoFunction(){
 }
 
 const configuracoes = {
-    aberturaCanos: 0,
-    distanciaCanos: 0,
-    src:''
+    aberturaCanos: 200,
+    distanciaCanos: 400,
+    src:'img/passaro.png',
+    velocidadeSubir: 8,
+    velocidadeDescer:-5,
+    pontuacao:1
 }
 
 function aberturaCanosFunction () {
@@ -242,6 +247,20 @@ function distanciaCanosFunction () {
         configuracoes.distanciaCanos = 400
     }else if(configuracoesJogo.distanciaCanosValue =="dificil"){
         configuracoes.distanciaCanos = 200
+    }
+    
+}
+
+function velocidadePersonagemFunction () {
+    if(configuracoesJogo.velocidadePersonagemValue =="baixa"){
+        configuracoes.velocidadeSubir = 3
+        configuracoes.velocidadeDescer = -2
+    }else if(configuracoesJogo.velocidadePersonagemValue =="media"){
+        configuracoes.velocidadeSubir = 8
+        configuracoes.velocidadeDescer = -5
+    }else if(configuracoesJogo.velocidadePersonagemValue =="rapida"){
+        configuracoes.velocidadeSubir = 11
+        configuracoes.velocidadeDescer = -9
     }
     
 }
@@ -291,12 +310,12 @@ btn.onclick = function (event) {
     configuracoesJogo.velocidadePersonagemValue = selecionaValue(velocidadePersonagem)
 
     const pontuacao = document.querySelectorAll('input[name="pontuacao"]');
-    configuracoesJogo.pontuacaoValue = selecionaValue(pontuacao)
+    configuracoesJogo.pontuacaoValue = Number(selecionaValue(pontuacao))
 
     const tipoJogo = document.querySelectorAll('input[name="tipoJogo"]');
     configuracoesJogo.tipoJogoValue = selecionaValue(tipoJogo)
 
-    //alert(configuracoesJogo.cenarioJogoValue)
+    //alert(configuracoesJogo.pontuacaoValue)
     document.querySelector("#insert_form").style.display = "none"
     document.querySelector("[wm-flappy]").style.display = "block"
     
@@ -304,6 +323,12 @@ btn.onclick = function (event) {
     aberturaCanosFunction()
     distanciaCanosFunction()
     personagensFunction()
+    velocidadePersonagemFunction()
+
+    
+    if(!isNaN(configuracoesJogo.pontuacaoValue)){
+        configuracoes.pontuacao = configuracoesJogo.pontuacaoValue
+    }
 
 
     new FlappyBird().start()
