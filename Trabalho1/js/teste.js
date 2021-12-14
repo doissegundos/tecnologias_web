@@ -59,7 +59,7 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
         new ParDeBarreiras(altura, abertura, largura + espaco * 3)
     ]
 
-    const deslocamento = 3
+    const deslocamento = configuracoesJogo.velocidadeJogo
     this.animar = () => {
         this.pares.forEach(par => {
             par.setX(par.getX() - deslocamento)
@@ -194,9 +194,10 @@ function colidiu(passaro, barreiras) {
             barreiras.animar()
             passaro.animar()
 
-              if(colidiu(passaro,barreiras)){
+              if(colidiu(passaro,barreiras)&&configuracoes.tipoJogo){
                  alert("O Jogador "+ configuracoesJogo.nome +" fez "+pontos+ " pontos")
                  clearInterval(temporizador) 
+                 document.location.reload(true)
              } 
         }, 20)
     }
@@ -226,7 +227,8 @@ const configuracoes = {
     src:'img/passaro.png',
     velocidadeSubir: 8,
     velocidadeDescer:-5,
-    pontuacao:1
+    pontuacao:1,
+    tipoJogo: true
 }
 
 function aberturaCanosFunction () {
@@ -294,7 +296,7 @@ btn.onclick = function (event) {
 
     event.preventDefault()
     configuracoesJogo.nome = document.querySelector("#nome").value
-    configuracoesJogo.velocidadeJogo = document.querySelector("#velocidadeJogo").value
+    configuracoesJogo.velocidadeJogo = Number(document.querySelector("#velocidadeJogo").value)
     configuracoesJogo.personagens = document.querySelector("#personagens").value
 
     const cenarioJogo = document.querySelectorAll('input[name="cenarioJogo"]');
@@ -315,9 +317,6 @@ btn.onclick = function (event) {
     const tipoJogo = document.querySelectorAll('input[name="tipoJogo"]');
     configuracoesJogo.tipoJogoValue = selecionaValue(tipoJogo)
 
-    //alert(configuracoesJogo.pontuacaoValue)
-    document.querySelector("#insert_form").style.display = "none"
-    document.querySelector("[wm-flappy]").style.display = "block"
     
     cenarioJogoFunction()
     aberturaCanosFunction()
@@ -330,6 +329,18 @@ btn.onclick = function (event) {
         configuracoes.pontuacao = configuracoesJogo.pontuacaoValue
     }
 
+    if(configuracoesJogo.velocidadeJogo>10 || configuracoesJogo.velocidadeJogo < 1 || isNaN(configuracoesJogo.velocidadeJogo)){
+        alert("O jogo não pode ter essa velocidade. Redefina as configurações")
+        document.location.reload(true)
+    }
+    
+    if(configuracoesJogo.tipoJogoValue == "treino"){
+        configuracoes.tipoJogo = false
+    }
+
+    //alert(configuracoesJogo.pontuacaoValue)
+    document.querySelector("#insert_form").style.display = "none"
+    document.querySelector("[wm-flappy]").style.display = "block"
 
     new FlappyBird().start()
     
