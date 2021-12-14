@@ -17,12 +17,6 @@ function Barreira(reversa = false) {
 
 }
 
-/*const b= new Barreira(false)
-b.setAltura(1000)
-document.querySelector('[wm-flappy]').appendChild(b.elemento) */ 
-
-
-
 function ParDeBarreiras(altura, abertura, popsicaoNaTela) {
     this.elemento = novoElemento('div', 'par-de-barreiras')
     this.superior = new Barreira(true)
@@ -46,10 +40,6 @@ function ParDeBarreiras(altura, abertura, popsicaoNaTela) {
     this.setX(popsicaoNaTela)
 } 
 
-/*
-Altera a posição das barreiras e o tamanho
-const b= new ParDeBarreiras(700,300,400)
-document.querySelector('[wm-flappy]').appendChild(b.elemento) */
 
 function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
     this.pares = [
@@ -77,15 +67,6 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
         })
     }
 }
-
-/*const barreiras = new Barreiras(700, 400, 200, 400)
-const areaDoJogo = document.querySelector('[wm-flappy]')
-
-barreiras.pares.forEach( par => areaDoJogo.appendChild(par.elemento)) 
-
-setInterval(() => {
-    barreiras.animar()
-},20)  */
 
 
 function Passaro(alturaJogo) {
@@ -115,20 +96,6 @@ function Passaro(alturaJogo) {
     this.setY(alturaJogo / 2)
 }
 
-/* const barreiras = new Barreiras(700, 400, 200, 400)
-const passaro = new Passaro(700)
-
-const areaDoJogo = document.querySelector('[wm-flappy]')
-
-areaDoJogo.appendChild(passaro.elemento)
-barreiras.pares.forEach( par => areaDoJogo.appendChild(par.elemento)) 
-
-setInterval(() => {
-      barreiras.animar()
-      passaro.animar() 
-},20) */
-
-
  function Progresso() {
 
     this.elemento = novoElemento('span', 'progresso')
@@ -137,15 +104,6 @@ setInterval(() => {
     }
     this.atualizarPontos(0)
 }
-
-/*  const barreiras = new Barreiras(700, 400, 200, 400)
-const passaro = new Passaro(700)
-
-const areaDoJogo = document.querySelector('[wm-flappy]')
-
-areaDoJogo.appendChild(passaro.elemento)
-barreiras.pares.forEach( par => areaDoJogo.appendChild(par.elemento))  */
-
 
  function estaoSobrepostos(elementoA, elementoB) {
 
@@ -298,32 +256,18 @@ btn.onclick = function (event) {
     configuracoesJogo.nome = document.querySelector("#nome").value
     configuracoesJogo.velocidadeJogo = Number(document.querySelector("#velocidadeJogo").value)
     configuracoesJogo.personagens = document.querySelector("#personagens").value
-
-    const cenarioJogo = document.querySelectorAll('input[name="cenarioJogo"]');
-    configuracoesJogo.cenarioJogoValue = selecionaValue(cenarioJogo)
-
-    const aberturaCanos = document.querySelectorAll('input[name="aberturaCanos"]');
-    configuracoesJogo.aberturaCanosValue = selecionaValue(aberturaCanos)
-
-    const distanciaCanos = document.querySelectorAll('input[name="distacniaCanos"]');
-    configuracoesJogo.distanciaCanosValue = selecionaValue(distanciaCanos)
-
-    const velocidadePersonagem = document.querySelectorAll('input[name="velocidadePersonagem"]');
-    configuracoesJogo.velocidadePersonagemValue = selecionaValue(velocidadePersonagem)
-
-    const pontuacao = document.querySelectorAll('input[name="pontuacao"]');
-    configuracoesJogo.pontuacaoValue = Number(selecionaValue(pontuacao))
-
-    const tipoJogo = document.querySelectorAll('input[name="tipoJogo"]');
-    configuracoesJogo.tipoJogoValue = selecionaValue(tipoJogo)
-
+    configuracoesJogo.cenarioJogoValue = selecionaValue(document.querySelectorAll('input[name="cenarioJogo"]'))
+    configuracoesJogo.aberturaCanosValue = selecionaValue(document.querySelectorAll('input[name="aberturaCanos"]'))
+    configuracoesJogo.distanciaCanosValue = selecionaValue(document.querySelectorAll('input[name="distacniaCanos"]')) 
+    configuracoesJogo.velocidadePersonagemValue = selecionaValue(document.querySelectorAll('input[name="velocidadePersonagem"]'))  
+    configuracoesJogo.pontuacaoValue = Number(selecionaValue(document.querySelectorAll('input[name="pontuacao"]')))
+    configuracoesJogo.tipoJogoValue = selecionaValue(document.querySelectorAll('input[name="tipoJogo"]'))
     
     cenarioJogoFunction()
     aberturaCanosFunction()
     distanciaCanosFunction()
     personagensFunction()
     velocidadePersonagemFunction()
-
     
     if(!isNaN(configuracoesJogo.pontuacaoValue)){
         configuracoes.pontuacao = configuracoesJogo.pontuacaoValue
