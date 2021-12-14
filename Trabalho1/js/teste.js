@@ -92,7 +92,7 @@ function Passaro(alturaJogo) {
     let voando = false
 
     this.elemento = novoElemento('img', 'passaro')
-    this.elemento.src = 'img/passaro.png'
+    this.elemento.src = configuracoes.src
 
     this.getY = () => parseInt(this.elemento.style.bottom.split('px')[0])
     this.setY = y => this.elemento.style.bottom = `${y}px`
@@ -179,7 +179,7 @@ function colidiu(passaro, barreiras) {
     const largura = areaDoJogo.clientWidth
 
     const progresso = new Progresso()
-    const barreiras = new Barreiras(altura, largura, 200, 400,
+    const barreiras = new Barreiras(altura, largura, configuracoes.aberturaCanos, configuracoes.distanciaCanos,
         () => progresso.atualizarPontos(++pontos))
 
     const passaro = new Passaro(altura)
@@ -209,6 +209,52 @@ const configuracoesJogo = {
     velocidadePersonagemValue: "baixa",
     pontuacaoValue: "1",
     tipoJogoValue: "treino"
+}
+
+function cenarioJogoFunction(){
+    if(configuracoesJogo.cenarioJogoValue=="noturno"){
+        document.querySelector("[wm-flappy]").style.backgroundColor = 'MidnightBlue'
+        document.querySelector("[wm-flappy]").style.border = 'Indigo'        
+    }
+}
+
+const configuracoes = {
+    aberturaCanos: 0,
+    distanciaCanos: 0,
+    src:''
+}
+
+function aberturaCanosFunction () {
+    if(configuracoesJogo.aberturaCanosValue =="facil"){
+        configuracoes.aberturaCanos = 300
+    }else if(configuracoesJogo.aberturaCanosValue =="medio"){
+        configuracoes.aberturaCanos = 200
+    }else if(configuracoesJogo.aberturaCanosValue =="dificil"){
+        configuracoes.aberturaCanos = 140
+    }
+    
+}
+
+function distanciaCanosFunction () {
+    if(configuracoesJogo.distanciaCanosValue =="facil"){
+        configuracoes.distanciaCanos = 500
+    }else if(configuracoesJogo.distanciaCanosValue =="medio"){
+        configuracoes.distanciaCanos = 400
+    }else if(configuracoesJogo.distanciaCanosValue =="dificil"){
+        configuracoes.distanciaCanos = 200
+    }
+    
+}
+
+function personagensFunction () {
+    if(configuracoesJogo.personagens =="flappy"){
+        configuracoes.src = 'img/passaro.png'
+    }else if(configuracoesJogo.personagens =="miranha"){
+        configuracoes.src = 'img/miranha.png'
+    }else if(configuracoesJogo.personagens =="fogo"){
+        configuracoes.src = 'img/fogo.jpg'
+    }
+    
 }
 
 function selecionaValue(nameForm){
@@ -250,9 +296,15 @@ btn.onclick = function (event) {
     const tipoJogo = document.querySelectorAll('input[name="tipoJogo"]');
     configuracoesJogo.tipoJogoValue = selecionaValue(tipoJogo)
 
-    alert(configuracoesJogo.tipoJogoValue)
+    //alert(configuracoesJogo.cenarioJogoValue)
     document.querySelector("#insert_form").style.display = "none"
     document.querySelector("[wm-flappy]").style.display = "block"
+    
+    cenarioJogoFunction()
+    aberturaCanosFunction()
+    distanciaCanosFunction()
+    personagensFunction()
+
 
     new FlappyBird().start()
     
