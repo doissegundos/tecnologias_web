@@ -1,3 +1,10 @@
+/* Nome: Stefane Adna dos Santos
+    Matricula: 403249
+*/
+
+
+document.querySelector("[wm-flappy]").style.display = "none"
+
 function novoElemento(tagName, className) {
     const elemento = document.createElement(tagName)
     elemento.className = className
@@ -14,12 +21,6 @@ function Barreira(reversa = false) {
     this.setAltura = altura => corpo.style.height = `${altura}px`
 
 }
-
-/*const b= new Barreira(false)
-b.setAltura(1000)
-document.querySelector('[wm-flappy]').appendChild(b.elemento) */ 
-
-
 
 function ParDeBarreiras(altura, abertura, popsicaoNaTela) {
     this.elemento = novoElemento('div', 'par-de-barreiras')
@@ -44,10 +45,6 @@ function ParDeBarreiras(altura, abertura, popsicaoNaTela) {
     this.setX(popsicaoNaTela)
 } 
 
-/*
-Altera a posição das barreiras e o tamanho
-const b= new ParDeBarreiras(700,300,400)
-document.querySelector('[wm-flappy]').appendChild(b.elemento) */
 
 function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
     this.pares = [
@@ -57,7 +54,7 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
         new ParDeBarreiras(altura, abertura, largura + espaco * 3)
     ]
 
-    const deslocamento = 3
+    const deslocamento = configuracoesJogo.velocidadeJogo
     this.animar = () => {
         this.pares.forEach(par => {
             par.setX(par.getX() - deslocamento)
@@ -76,21 +73,12 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
     }
 }
 
-/*const barreiras = new Barreiras(700, 400, 200, 400)
-const areaDoJogo = document.querySelector('[wm-flappy]')
-
-barreiras.pares.forEach( par => areaDoJogo.appendChild(par.elemento)) 
-
-setInterval(() => {
-    barreiras.animar()
-},20)  */
-
 
 function Passaro(alturaJogo) {
     let voando = false
 
     this.elemento = novoElemento('img', 'passaro')
-    this.elemento.src = 'img/passaro.png'
+    this.elemento.src = configuracoes.src
 
     this.getY = () => parseInt(this.elemento.style.bottom.split('px')[0])
     this.setY = y => this.elemento.style.bottom = `${y}px`
@@ -99,7 +87,7 @@ function Passaro(alturaJogo) {
     window.onkeyup = e => voando = false
 
     this.animar = () => {
-        const novoY = this.getY() + (voando ? 8 : -5)
+        const novoY = this.getY() + (voando ? configuracoes.velocidadeSubir : configuracoes.velocidadeDescer)
         const alturaMaxima = alturaJogo - this.elemento.clientWidth
 
         if (novoY <= 0) {
@@ -113,20 +101,6 @@ function Passaro(alturaJogo) {
     this.setY(alturaJogo / 2)
 }
 
-/* const barreiras = new Barreiras(700, 400, 200, 400)
-const passaro = new Passaro(700)
-
-const areaDoJogo = document.querySelector('[wm-flappy]')
-
-areaDoJogo.appendChild(passaro.elemento)
-barreiras.pares.forEach( par => areaDoJogo.appendChild(par.elemento)) 
-
-setInterval(() => {
-      barreiras.animar()
-      passaro.animar() 
-},20) */
-
-
  function Progresso() {
 
     this.elemento = novoElemento('span', 'progresso')
@@ -135,15 +109,6 @@ setInterval(() => {
     }
     this.atualizarPontos(0)
 }
-
-/*  const barreiras = new Barreiras(700, 400, 200, 400)
-const passaro = new Passaro(700)
-
-const areaDoJogo = document.querySelector('[wm-flappy]')
-
-areaDoJogo.appendChild(passaro.elemento)
-barreiras.pares.forEach( par => areaDoJogo.appendChild(par.elemento))  */
-
 
  function estaoSobrepostos(elementoA, elementoB) {
 
@@ -166,6 +131,7 @@ function colidiu(passaro, barreiras) {
                 || estaoSobrepostos(passaro.elemento, inferior)
         }
     })
+
     return colidiu
 
 }
@@ -177,8 +143,8 @@ function colidiu(passaro, barreiras) {
     const largura = areaDoJogo.clientWidth
 
     const progresso = new Progresso()
-    const barreiras = new Barreiras(altura, largura, 200, 400,
-        () => progresso.atualizarPontos(++pontos))
+    const barreiras = new Barreiras(altura, largura, configuracoes.aberturaCanos, configuracoes.distanciaCanos,
+        () => progresso.atualizarPontos(pontos+=configuracoes.pontuacao))
 
     const passaro = new Passaro(altura)
 
@@ -191,10 +157,144 @@ function colidiu(passaro, barreiras) {
             barreiras.animar()
             passaro.animar()
 
-              if(colidiu(passaro,barreiras)){
+              if(colidiu(passaro,barreiras)&&configuracoes.tipoJogo){
+                 alert("O Jogador "+ configuracoesJogo.nome +" fez "+pontos+ " pontos")
                  clearInterval(temporizador) 
+                 document.location.reload(true)
              } 
         }, 20)
     }
 }
- //new FlappyBird().start() 
+
+const configuracoesJogo = {
+    nome: "",
+    velocidadeJogo: 2,
+    personagens: "personagem1",
+    cenarioJogoValue:"diurno",
+    aberturaCanosValue: "facil",
+    velocidadePersonagemValue: "baixa",
+    pontuacaoValue: 1,
+    tipoJogoValue: "treino"
+}
+
+function cenarioJogo(){
+    if(configuracoesJogo.cenarioJogoValue=="noturno"){
+        document.querySelector("[wm-flappy]").style.backgroundImage = 'url(img/noite.png)'  
+        
+    }
+}
+
+const configuracoes = {
+    aberturaCanos: 200,
+    distanciaCanos: 400,
+    src:'img/passaro.png',
+    velocidadeSubir: 8,
+    velocidadeDescer:-5,
+    pontuacao:1,
+    tipoJogo: true
+}
+
+function aberturaCanos () {
+    if(configuracoesJogo.aberturaCanosValue =="facil"){
+        configuracoes.aberturaCanos = 300
+    }else if(configuracoesJogo.aberturaCanosValue =="medio"){
+        configuracoes.aberturaCanos = 200
+    }else if(configuracoesJogo.aberturaCanosValue =="dificil"){
+        configuracoes.aberturaCanos = 140
+    }
+    
+}
+
+function distanciaCanos () {
+    if(configuracoesJogo.distanciaCanosValue =="facil"){
+        configuracoes.distanciaCanos = 500
+    }else if(configuracoesJogo.distanciaCanosValue =="medio"){
+        configuracoes.distanciaCanos = 400
+    }else if(configuracoesJogo.distanciaCanosValue =="dificil"){
+        configuracoes.distanciaCanos = 200
+    }
+    
+}
+
+function velocidadePersonagem () {
+    if(configuracoesJogo.velocidadePersonagemValue =="baixa"){
+        configuracoes.velocidadeSubir = 3
+        configuracoes.velocidadeDescer = -2
+    }else if(configuracoesJogo.velocidadePersonagemValue =="media"){
+        configuracoes.velocidadeSubir = 8
+        configuracoes.velocidadeDescer = -5
+    }else if(configuracoesJogo.velocidadePersonagemValue =="rapida"){
+        configuracoes.velocidadeSubir = 11
+        configuracoes.velocidadeDescer = -9
+    }
+    
+}
+
+function personagens() {
+    if(configuracoesJogo.personagens =="flappy"){
+        configuracoes.src = 'img/passaro.png'
+    }else if(configuracoesJogo.personagens =="miranha"){
+        configuracoes.src = 'img/miranha.png'
+    }else if(configuracoesJogo.personagens =="carro"){
+        configuracoes.src = 'img/carros.png'
+    }
+    else if(configuracoesJogo.personagens =="unicornio"){
+        configuracoes.src = 'img/unicornio.png'
+    }
+    
+}
+
+function selecionaValue(nameForm){
+    let nameFormValue;
+    for (const rb of nameForm) {
+        if (rb.checked) {
+            nameFormValue = rb.value;
+            break;
+        }
+    }
+    return nameFormValue
+}
+
+
+const btn = document.querySelector('#botao');
+
+btn.onclick = function (event) {
+
+    event.preventDefault()
+    configuracoesJogo.nome = document.querySelector("#nome").value
+    configuracoesJogo.velocidadeJogo = Number(document.querySelector("#velocidadeJogo").value)
+    configuracoesJogo.personagens = document.querySelector("#personagens").value
+    configuracoesJogo.cenarioJogoValue = selecionaValue(document.querySelectorAll('input[name="cenarioJogo"]'))
+    configuracoesJogo.aberturaCanosValue = selecionaValue(document.querySelectorAll('input[name="aberturaCanos"]'))
+    configuracoesJogo.distanciaCanosValue = selecionaValue(document.querySelectorAll('input[name="distacniaCanos"]')) 
+    configuracoesJogo.velocidadePersonagemValue = selecionaValue(document.querySelectorAll('input[name="velocidadePersonagem"]'))  
+    configuracoesJogo.pontuacaoValue = Number(selecionaValue(document.querySelectorAll('input[name="pontuacao"]')))
+    configuracoesJogo.tipoJogoValue = selecionaValue(document.querySelectorAll('input[name="tipoJogo"]'))
+    
+    cenarioJogo()
+    aberturaCanos()
+    distanciaCanos()
+    personagens()
+    velocidadePersonagem()
+    
+    if(!isNaN(configuracoesJogo.pontuacaoValue)){
+        configuracoes.pontuacao = configuracoesJogo.pontuacaoValue
+    }
+
+    if(configuracoesJogo.velocidadeJogo>10 || configuracoesJogo.velocidadeJogo < 1 || isNaN(configuracoesJogo.velocidadeJogo)){
+        alert("O jogo não pode ter essa velocidade. Redefina as configurações")
+        document.location.reload(true)
+    }
+    
+    if(configuracoesJogo.tipoJogoValue == "treino"){
+        configuracoes.tipoJogo = false
+    }
+
+    //alert(configuracoesJogo.pontuacaoValue)
+    document.querySelector("#insert_form").style.display = "none"
+    document.querySelector("[wm-flappy]").style.display = "block"
+
+    new FlappyBird().start()
+    
+};
+

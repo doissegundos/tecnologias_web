@@ -32,7 +32,7 @@ body {
 
 [wm-flappy] {
     position: relative;
-    border: 5px solid #0D262D;
+    border: 5px solid dodgerblue;
     height: 700px;
     width: 1200px;
     margin: 15px;

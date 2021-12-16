@@ -1,33 +1,155 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>Flappy Bird</title>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
     <link rel="stylesheet" href="css/flappy.css">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<body class="conteudo">
-    <h1>Flappy Bird</h1>
-    <div wm-flappy>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Olá, mundo!</title>
+  </head>
+  <body class="conteudo">
+    <div class="form-bootstrap">
+      <h1 class="titulo">Flappy Bird</h1>
+        <form id="insert_form">
+          <h4 class="titulo">Configurações do jogo</h4>
+            <div class="form-group">
+              <label for="nome" class="label-titulo">Nome do jogador</label>
+              <input class="form-control" id="nome" type="text" placeholder="ex. Stefane">
+            </div>
 
-        <!-- 
-       <img class="passaro" src="img/passaro.png" alt="passaro">
-        <div class="par-de-barreiras">
-            <div class="barreira">
-                <div class="corpo"> </div>
-                <div class="borda"></div>
+            <div class="form-group" id="cenario">
+              <label for="cenario-jogo" class="label-titulo">Cenário do jogo</label>
+              <div class="form-group" id="cenario-jogo">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="cenarioJogo" id="cenarioJogoRadio1" value="noturno">
+                  <label class="form-check-label" for="cenarioJogoRadio1">Noturno</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="cenarioJogo" id="cenarioJogoRadio2" value="diurno">
+                  <label class="form-check-label" for="cenarioJogoRadio2">Diurno</label>
+                </div>
+              </div>              
             </div>
-            <div class="barreira">
-                <div class="borda"> </div>
-                <div class="corpo"></div>
+
+            <div class="form-group">
+              <label for="intervalo-abertura" class="label-titulo">Intervalo de abertura entre os canos</label>
+              <div class="form-group" id="intervalo-abertura">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="aberturaCanos" id="aberturaCanosRadio1" value="facil">
+                  <label class="form-check-label" for="aberturaCanosRadio1">Facil</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="aberturaCanos" id="aberturaCanosRadio2" value="medio">
+                  <label class="form-check-label" for="aberturaCanosRadio2">Medio</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="aberturaCanos" id="aberturaCanosRadio3" value="dificil">
+                  <label class="form-check-label" for="aberturaCanosRadio3">Dificil</label>
+                </div>
+              </div>              
             </div>
-        </div>
-        <div class="progresso"> 10 </div>   -->
+
+            <div class="form-group">
+              <label for="distancia-canos" class="label-titulo">Distancia entre os canos</label>
+              <div class="form-group" id="distancia-canos">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="distacniaCanos" id="distacniaCanosRadio1" value="facil">
+                  <label class="form-check-label" for="distacniaCanosRadio1">Facil</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="distacniaCanos" id="distacniaCanosRadio2" value="medio">
+                  <label class="form-check-label" for="distacniaCanosRadio2">Medio</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="distacniaCanos" id="distacniaCanosRadio3" value="dificil">
+                  <label class="form-check-label" for="distacniaCanosRadio3">Dificil</label>
+                </div>
+              </div>              
+            </div>
+
+            <div class="form-group">
+              <label for="velocidade-jogo" class="label-titulo">Velocidade do jogo</label>
+              <input class="form-control" id="velocidadeJogo" type="text" placeholder="Digite um número inteiro entre 1 e 10">
+            </div>
+
+            <div class="form-group">
+              <label for="personagens" class="label-titulo">Escolha o personagem</label>
+              <select id="personagens" class="form-control">
+                <option value="flappy">Flappy Bird</option>
+                <option value="miranha">Miranha</option>
+                <option value="carro">Carros</option>
+                <option value="unicornio">Unicornio</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="velocidade-personagem" class="label-titulo">Velocidade do personagem</label>
+              <div class="form-group" id="velocidade-personagem">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="velocidadePersonagem" id="velocidadePersonagemRadio1" value="baixa">
+                  <label class="form-check-label" for="velocidadePersonagemRadio1">Baixa</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="velocidadePersonagem" id="velocidadePersonagemRadio2" value="media">
+                  <label class="form-check-label" for="velocidadePersonagemRadio2">Media</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="velocidadePersonagem" id="velocidadePersonagemRadio3" value="rapida">
+                  <label class="form-check-label" for="velocidadePersonagemRadio3">Rapida</label>
+                </div>
+              </div>              
+            </div>
+
+            <div class="form-group">
+              <label for="pontuacaoDiv" class="label-titulo" >Pontuação</label>
+              <div class="form-group" id="pontuacaoDiv">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="pontuacao" id="pontuacaoRadio1" value=1>
+                  <label class="form-check-label" for="pontuacaoRadio1">1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="pontuacao" id="pontuacaoRadio2" value=10>
+                  <label class="form-check-label" for="pontuacaoRadio2">10</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="pontuacao" id="pontuacaoRadio3" value=100>
+                  <label class="form-check-label" for="pontuacaoRadio3">100</label>
+                </div>
+              </div>              
+            </div>
+
+            <div class="form-group">
+              <label for="tipo-jogo" class="label-titulo">Tipo de jogo</label>
+              <div class="form-group" id="tipo-jogo">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoJogo" id="tipoJogoRadio1" value="treino">
+                  <label class="form-check-label" for="tipoJogoRadio1">Treino</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoJogo" id="tipoJogoRadio2" value="real">
+                  <label class="form-check-label" for="tipoJogoRadio2">Real</label>
+                </div>
+            </div>
+
+            
+            <button type="submit" name="botao" id="botao" value="botao" class="btn btn-warning botao-iniciar" href="index.html" >Iniciar Jogo !!</button>
+            
+                                    
+          </form>
+
+    
     </div>
+    
+    <div  wm-flappy></div>
 
-
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="js/flappy.js"></script>
-</body>
-
+  </body>
 </html>
