@@ -19,7 +19,19 @@ if (isset($_SESSION['administrador'])){
                             <input type="text" class="form-control" id="cpf-cliente" aria-describedby="cpfHelp" name="cpfCliente">
                             <div id="cpf" class="form-text"></div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Pesquisar por CPF</button>
+                    </form>
+                </div>
+            </div>
+            <div class="collapse show" id="collapseCardExample">
+                <div class="card-body">
+                    <form method="POST" action="">
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="cpf-cliente" aria-describedby="cpfHelp" name="nomeCliente">
+                            <div id="cpf" class="form-text"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Pesquisar por Nome</button>
                     </form>
                 </div>
             </div>
@@ -29,12 +41,14 @@ if (isset($_SESSION['administrador'])){
 
 <?php
 $objCliente = new Cliente();
-$objCliente->selecionarPorId(11);
+//$objCliente->selecionarPorId(11);
 
 if (isset($_GET['id'])) {
     $objCliente->selecionarPorId($_GET['id']);
 } else if (isset($_POST['cpfCliente'])) {
     $objCliente->selecionarPorCPF($_POST['cpfCliente']);
+} else if(isset($_POST['nomeCliente'])){
+    $objCliente->selecionarPorNome($_POST['nomeCliente']);
 } else {
     $objCliente->selecionarClientes();
 }
