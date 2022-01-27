@@ -16,7 +16,7 @@ if (isset($_GET['rota'])) {
             include("../include/editarCliente.php");
             break;
         case "index_login":
-            include("../index.html");
+            include("../include/index.php");
             break;
         
         
@@ -52,7 +52,6 @@ if (isset($_POST['formCadastrarCliente'])) {
     $objCliente->editar();
 
 }else if (isset($_POST['PPK'])) {
-    echo "<script>alert('Operacao executada com sucesso!')</script>";
     $objAdm = new Adm();
     $objAdm->setNome($_POST['nomeADM']);
     $objAdm->setSenha($_POST['senhaADM']);
