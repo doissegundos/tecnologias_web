@@ -45,6 +45,11 @@ $objCliente = new Cliente();
 
 if (isset($_GET['id'])) {
     $objCliente->selecionarPorId($_GET['id']);
+    if (isset($_POST['cpfCliente'])) {
+        $objCliente->selecionarPorCPF($_POST['cpfCliente']);
+    } else if(isset($_POST['nomeCliente'])){
+        $objCliente->selecionarPorNome($_POST['nomeCliente']);
+    }
 } else if (isset($_POST['cpfCliente'])) {
     $objCliente->selecionarPorCPF($_POST['cpfCliente']);
 } else if(isset($_POST['nomeCliente'])){

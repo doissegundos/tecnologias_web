@@ -1,5 +1,6 @@
 <?php
 include_once("../classes/Cliente.php");
+include_once("../classes/adm.php");
 //Get
 if (isset($_GET['rota'])) {
     switch ($_GET['rota']) {
@@ -14,6 +15,11 @@ if (isset($_GET['rota'])) {
         case "editar_cliente":
             include("../include/editarCliente.php");
             break;
+        case "index_login":
+            include("../index.html");
+            break;
+        
+        
      
     }
 }
@@ -21,6 +27,7 @@ if (isset($_GET['rota'])) {
 
 //Post
 if (isset($_POST['formCadastrarCliente'])) {
+    echo "<script>alert('1!')</script>";
     $objCliente = new Cliente();
     $objCliente->setNome($_POST['nomeCliente']);
     $objCliente->setCPF($_POST['cpfCliente']);
@@ -32,6 +39,7 @@ if (isset($_POST['formCadastrarCliente'])) {
     $objCliente->cadastrar();
 
 } else if (isset($_POST['formEditarCliente'])) {
+    echo "<script>alert('2!')</script>";
     $objCliente = new Cliente();
     $objCliente->setNome($_POST['nomeCliente']);
     $objCliente->setCPF($_POST['cpfCliente']);
@@ -42,5 +50,13 @@ if (isset($_POST['formCadastrarCliente'])) {
     $objCliente->setCidade($_POST['endCidadeCliente']);
     $objCliente->setEstado($_POST['endEstadoCliente']);
     $objCliente->editar();
+
+}else if (isset($_POST['PPK'])) {
+    echo "<script>alert('Operacao executada com sucesso!')</script>";
+    $objAdm = new Adm();
+    $objAdm->setNome($_POST['nomeADM']);
+    $objAdm->setSenha($_POST['senhaADM']);
+    $objAdm->setEmail($_POST['emailADM']);
+    $objAdm->cadastrar();
 
 }
