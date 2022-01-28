@@ -1,4 +1,5 @@
 <?php
+//session_start();
 include_once("../classes/Conexao.php");
 include_once("../classes/Utilidades.php");
 class Login{
@@ -20,28 +21,33 @@ class Login{
 
    }
 
-    public function verificar($email,$senha){
-        session_start();
-        $interacaoMySql = $this->conexaoBD->prepare("select * from adm where email_adm='?' and senha_adm='?'");
-        $interacaoMySql->bind_param('ss',$email,$senha);
-        $retorno= $interacaoMySql->execute();
-        // if($retorno){
-        //     $_SESSION['administrador'] = 'true';
-        //     $this->utilidades->redireciona("../produto/admin.php");
-        // }else{
-        //     $this->utilidades->alerta(false);
-        // }
-        
-    }
+    public function verificar($email,$senha){      
+      $sql="select * from adm where email_adm='$email' and senha_adm='$senha'";
+      $this->retornoBD=$this->conexaoBD-> query($sql);
+      $result = mysqli_query($this->conexaoBD,$sql);
+      if(mysqli_num_rows($result)>0){
+         //isset($_SESSION['administrador']) = 'true';
+         echo "<script>alert('Seja bem vindo!!')</script>";
+         $this->utilidades->redireciona("../produto/admin.php");
+      }else{
+         echo "<script>alert('Usuário ou senha incorretos!!')</script>";
+         $this->utilidades->redireciona("index.php");
+
+      }
+   
+   }
 
   }
 
-//   $interacaoMySql = $this->conexaoBD->prepare("INSERT INTO cliente (nome_cliente, email_cliente, cpf_cliente, celular_cliente, rua_cliente, cidade_cliente, estado_cliente) 
-//             VALUES (?, ?, ?, ?, ?, ?, ?)");
-//             $interacaoMySql->bind_param('sssssss', $this->getNome(),$this->getEmail(),$this->getCPF(),$this->getCelular(),$this->getRua(),$this->getCidade(),$this->getEstado());
-//             $retorno= $interacaoMySql->execute();
-// echo "<script>alert('Administrador cadastrado com sucesso!.')</script>";
-// $sql = "select count(1) from adm where email_adm='$email' and senha_adm='$senha'";
-// $retorno = $this->conexaoBD->query($sql);
-// $teste = mysqli_num_rows($retorno);
-// echo $teste;
+//   public function verificar($email,$senha){
+//    echo "<script>alert('Operacao executada com sucesso!')</script>";        
+//    $sql="select * from adm where email_adm='$email' and senha_adm='$senha'";
+//    $this->retornoBD=$this->conexaoBD-> query($sql);
+//    $result = mysqli_query($this->conexaoBD,$sql);
+//    if(mysqli_num_rows($result)>0){
+//       echo "<script>alert('ENTROU')</script>";
+//    }else{
+//       echo "<script>alert('DEU RUIM AGAINNN')</script>";
+//    }
+
+// }

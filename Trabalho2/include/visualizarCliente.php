@@ -100,6 +100,6 @@ if ($objCliente->retornoBD != null) {
 <?php
 }
 }else{
-    header("Location:../index.php");
+    header("Location:../index.html");
 }
 ?>
