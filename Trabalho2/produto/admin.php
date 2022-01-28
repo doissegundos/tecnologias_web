@@ -1,7 +1,4 @@
-<?php
-session_start();
-$_SESSION["administrador"] = 'true';
-?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

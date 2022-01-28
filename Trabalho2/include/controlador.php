@@ -1,6 +1,7 @@
 <?php
 include_once("../classes/Cliente.php");
 include_once("../classes/adm.php");
+include_once("../classes/login.php");
 //Get
 if (isset($_GET['rota'])) {
     switch ($_GET['rota']) {
@@ -15,9 +16,7 @@ if (isset($_GET['rota'])) {
         case "editar_cliente":
             include("../include/editarCliente.php");
             break;
-        case "index_login":
-            include("../include/index.php");
-            break;
+        
         
         
      
@@ -51,11 +50,15 @@ if (isset($_POST['formCadastrarCliente'])) {
     $objCliente->setEstado($_POST['endEstadoCliente']);
     $objCliente->editar();
 
-}else if (isset($_POST['PPK'])) {
+}else if (isset($_POST['formADM'])) {
     $objAdm = new Adm();
     $objAdm->setNome($_POST['nomeADM']);
     $objAdm->setSenha($_POST['senhaADM']);
     $objAdm->setEmail($_POST['emailADM']);
     $objAdm->cadastrar();
+
+}else if (isset($_POST['formLogin'])) {
+    $objLogin = new Login();
+    $objLogin->verificar($_POST['emailADM'],$_POST['senhaADM']);
 
 }

@@ -61,8 +61,8 @@ class Adm{
             $retorno= $interacaoMySql->execute();
 
            $id= mysqli_insert_id($this->conexaoBD);
-           echo "<script>alert('Operacao executada com sucesso!')</script>";
-           return $this->utilidades->validaRedirecionar( $retorno, $id, "admin.php?rota=index_login", "O cliente foi cadastrado com sucesso!");
+           echo "<script>alert('Administrador cadastrado com sucesso!')</script>";
+           return $this->utilidades->validaRedirecionarADM( $retorno, $id, "index.php", "O cliente foi cadastrado com sucesso!");
         }else{
             return $this->utilidades->mesagemParaUsuario("Erro, email não cadastrado!");
         }

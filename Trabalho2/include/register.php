@@ -49,7 +49,7 @@
                 <input type="text" class="form-control" id="senha-adm" aria-describedby="senhaHelp" name="senhaADM" >
                 <div id="senhaHelp" class="form-text"></div>
             </div>
-            <input type="hidden" name="PPK">
+            <input type="hidden" name="formADM">
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
           

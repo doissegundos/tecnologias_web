@@ -35,6 +35,16 @@ class Utilidades{
             return false;
         }
     }
+    public function validaRedirecionarADM($retornoBanco, $id, $pag, $msg)  {
+        if ($retornoBanco != 0) {
+            $link = $pag ;
+            $this->redireciona($link);
+            return true;
+        } else {
+            $this->alerta(false);
+            return false;
+        }
+    }
     public function validaRedirecionaAcaoDeletar($retornoBanco, $pag, $msg) {
         if ($retornoBanco == 0) {
             $this->mesagemParaUsuario("O elemento não pode ser deletado!");
