@@ -2,6 +2,7 @@
 include_once("../classes/Cliente.php");
 include_once("../classes/adm.php");
 include_once("../classes/login.php");
+include_once("../classes/pet.php");
 //Get
 if (isset($_GET['rota'])) {
     switch ($_GET['rota']) {
@@ -16,7 +17,12 @@ if (isset($_GET['rota'])) {
         case "editar_cliente":
             include("../include/editarCliente.php");
             break;
-        
+        case "cadastrar_pet":
+            include("../include/cadastrarPET.php");
+            break;     
+            case "visualizar_pet":
+                include("../include/visualizarPET.php");
+                break;   
         
         
      
@@ -26,7 +32,6 @@ if (isset($_GET['rota'])) {
 
 //Post
 if (isset($_POST['formCadastrarCliente'])) {
-    echo "<script>alert('1!')</script>";
     $objCliente = new Cliente();
     $objCliente->setNome($_POST['nomeCliente']);
     $objCliente->setCPF($_POST['cpfCliente']);
@@ -38,7 +43,6 @@ if (isset($_POST['formCadastrarCliente'])) {
     $objCliente->cadastrar();
 
 } else if (isset($_POST['formEditarCliente'])) {
-    echo "<script>alert('2!')</script>";
     $objCliente = new Cliente();
     $objCliente->setNome($_POST['nomeCliente']);
     $objCliente->setCPF($_POST['cpfCliente']);
@@ -59,5 +63,11 @@ if (isset($_POST['formCadastrarCliente'])) {
 
 }else if (isset($_POST['formLogin'])) {
     verificar($_POST['emailADM'],$_POST['senhaADM']);
+
+}else if (isset($_POST['formCadastrarPET'])) {
+    $objPet = new Pet();
+    $objPet->setNome($_POST['nomePET']);
+    $objPet->setCPF($_POST['cpfPET']);
+    $objPet->cadastrar();
 
 }

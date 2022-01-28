@@ -71,7 +71,9 @@ if (isset($_SESSION['administrador'])){
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Funcionalidades:</h6>
                         <a class="collapse-item" href="?rota=cadastrar_cliente">Cadastrar</a>
-                        <a class="collapse-item" href="?rota=visualizar_cliente">Visualizar</a>
+                        <a class="collapse-item" href="?rota=visualizar_cliente">Visualizar Cliente</a>
+                        <a class="collapse-item" href="?rota=cadastrar_pet">Cadastrar PET</a>
+                        <a class="collapse-item" href="?rota=visualizar_pet">Visualizar PET</a>
                     </div>
                 </div>
             </li>
