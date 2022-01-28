@@ -59,5 +59,4 @@ if (isset($_SESSION['administrador'])){
 
 }else{
     header("Location:../index.html");
-}
-?>
+}?>

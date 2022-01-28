@@ -58,7 +58,6 @@ if (isset($_POST['formCadastrarCliente'])) {
     $objAdm->cadastrar();
 
 }else if (isset($_POST['formLogin'])) {
-    $objLogin = new Login();
-    $objLogin->verificar($_POST['emailADM'],$_POST['senhaADM']);
+    verificar($_POST['emailADM'],$_POST['senhaADM']);
 
 }

@@ -101,5 +101,4 @@ if ($objCliente->retornoBD != null) {
 }
 }else{
     header("Location:../index.html");
-}
-?>
+}?>
