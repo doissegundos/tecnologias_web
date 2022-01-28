@@ -11,3 +11,17 @@ function deletarCliente(cod){
         );
     }
 }
+
+function deletarPet(cod){
+
+    if(confirm('Você tem certeza que deseja deletar este pet?')){
+        $.post("../include/deletarRegistros.php", 
+        {
+            idPetDeletar:cod
+        },
+        function(valor){
+            $("#mensagem").html(valor);
+        }
+        );
+    }
+}

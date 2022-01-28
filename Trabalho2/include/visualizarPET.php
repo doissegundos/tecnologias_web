@@ -64,8 +64,8 @@ if ($objPet ->retornoBD != null) {
                         $retorno->nome_pet . '</td><td>' .
                         $retorno->nome_cliente . '</td>';
 
-                    echo '<td><a href="?rota=editar_cliente&id='.$retorno->id_cliente.'" class="btn btn-info btn-circle btn-sm"><i class="fas fa-list"></i></a></td>';
-                    echo '<td><a href="#" class="btn btn-danger btn-circle btn-sm" onclick=\'deletarCliente("' . $retorno->id_cliente . '")\';><i class="fas fa-trash"></i></a></td></tr>';
+                    echo '<td><a href="?rota=editar_cliente&id='.$retorno->id_pet.'" class="btn btn-info btn-circle btn-sm"><i class="fas fa-list"></i></a></td>';
+                    echo '<td><a href="#" class="btn btn-danger btn-circle btn-sm" onclick=\'deletarPet("' . $retorno->id_pet . '")\';><i class="fas fa-trash"></i></a></td></tr>';
                 }
 
                 ?>

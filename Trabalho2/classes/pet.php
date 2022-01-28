@@ -62,7 +62,22 @@ class Pet{
     
     public function editar(){
 
-        
+        if($this->getId()!=null){
+            
+            $interacaoMySql = $this->conexaoBD->prepare("UPDATE  cliente set  nome_cliente=?, email_cliente=?, cpf_cliente=? 
+            where id_cliente=?");
+            $interacaoMySql->bind_param('sssi', $this->getNome(),$this->$this->getCPF(),$this->getCPF(),$this->getId());
+            $retorno=$interacaoMySql->execute();
+            if ($retorno === false) {
+                trigger_error($this->conexaoBD->error, E_USER_ERROR);
+              }
+
+           $id= mysqli_insert_id($this->conexaoBD);
+          
+           return $this->utilidades->validaRedirecionar( $retorno, $this->getId(), "admin.php?rota=visualizar_cliente", "Os dados do cliente foram alterados com sucesso!");
+        }else{
+            return $this->utilidades->mesagemParaUsuario("Erro! CPF não foi infomado.");
+        }
     }
 
     public function selecionarPorId($id){
@@ -80,9 +95,9 @@ class Pet{
     }
 
     public function deletar($id){
-        $sql="DELETE from cliente where id_cliente=$id";
+        $sql="DELETE from pet where id_pet=$id";
         $this->retornoBD=$this->conexaoBD-> query($sql);
-        $this->utilidades->validaRedirecionaAcaoDeletar($this->retornoBD,'admin.php?rota=visualizar_cliente','O cliente foi deletado com sucesso!');
+        $this->utilidades->validaRedirecionaAcaoDeletar($this->retornoBD,'admin.php?rota=visualizar_pet','O pet foi deletado com sucesso!');
     }
   }
 
