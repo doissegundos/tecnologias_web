@@ -8,13 +8,13 @@ if (isset($_SESSION['administrador'])){
             <form method="POST" action="">
 
                 <div class="mb-3">
-                    <label for="nome" class="form-label">Nome</label>
+                    <label for="nome" class="form-label">Nome do pet</label>
                     <input type="text" class="form-control" id="nome-pet" aria-describedby="nomeHelp" name="nomePet" >
                     <div id="nomeHelp" class="form-text"></div>
                 </div>
                
                 <div class="mb-3">
-                    <label for="cpf" class="form-label">CPF</label>
+                    <label for="cpf" class="form-label">CPF do cliente</label>
                     <input type="text" class="form-control" id="cpf-cliente" aria-describedby="cpfHelp" name="cpfCliente" >
                     <div id="cpf" class="form-text"></div>
                 </div>

@@ -1,5 +1,4 @@
 <?php
-include_once("../classes/dashboardClasse.php");
 include_once("../classes/Conexao.php");
 ?>
 <!DOCTYPE html>
