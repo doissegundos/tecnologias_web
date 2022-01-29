@@ -47,7 +47,7 @@ if (isset($_SESSION['administrador'])){
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="../dashboard.html">
+                <a class="nav-link" href="../include/dashboard.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
