@@ -3,6 +3,7 @@ include_once("../classes/Cliente.php");
 include_once("../classes/adm.php");
 include_once("../classes/login.php");
 include_once("../classes/pet.php");
+include_once("../classes/consulta.php");
 //Get
 if (isset($_GET['rota'])) {
     switch ($_GET['rota']) {
@@ -26,7 +27,13 @@ if (isset($_GET['rota'])) {
         case "editar_pet":
             include("../include/editarPET.php");
             break;
-    
+        case "consulta":
+            include("../include/cadastrarConsulta.php");
+            break;
+        case "visualizar_consulta":
+            include("../include/visualizarConsulta.php");
+            break;
+
         
      
     }
@@ -81,3 +88,11 @@ else if (isset($_POST['formEditarPet'])) {
     $objPet->editar();
 
 }
+else if (isset($_POST['formCadastrarConsulta'])) {
+    cadastrarConsulta($_POST['nomePet'],$_POST['cpfCliente'],$_POST['dataConsulta'],$_POST['horaConsulta'],$_POST['obsConsulta']);
+    // $objPet->setNome($_POST['nomePet']);
+    // $objPet->setID($_POST['idPet']);
+    // $objPet->editar();
+
+}
+

@@ -74,6 +74,8 @@ if (isset($_SESSION['administrador'])){
                         <a class="collapse-item" href="?rota=visualizar_cliente">Visualizar Cliente</a>
                         <a class="collapse-item" href="?rota=cadastrar_pet">Cadastrar PET</a>
                         <a class="collapse-item" href="?rota=visualizar_pet">Visualizar PET</a>
+                        <a class="collapse-item" href="?rota=consulta">Cadastrar Consulta</a>
+                        <a class="collapse-item" href="?rota=visualizar_consulta">Visualizar Consulta</a>
                     </div>
                 </div>
             </li>
