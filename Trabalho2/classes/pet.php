@@ -62,11 +62,12 @@ class Pet{
     
     public function editar(){
 
+
         if($this->getId()!=null){
             
-            $interacaoMySql = $this->conexaoBD->prepare("UPDATE  cliente set  nome_cliente=?, email_cliente=?, cpf_cliente=? 
-            where id_cliente=?");
-            $interacaoMySql->bind_param('sssi', $this->getNome(),$this->$this->getCPF(),$this->getCPF(),$this->getId());
+            $interacaoMySql = $this->conexaoBD->prepare("UPDATE  pet set  nome_pet=? 
+            where id_pet=?");
+            $interacaoMySql->bind_param('si', $this->getNome(),$this->getId());
             $retorno=$interacaoMySql->execute();
             if ($retorno === false) {
                 trigger_error($this->conexaoBD->error, E_USER_ERROR);
@@ -74,7 +75,7 @@ class Pet{
 
            $id= mysqli_insert_id($this->conexaoBD);
           
-           return $this->utilidades->validaRedirecionar( $retorno, $this->getId(), "admin.php?rota=visualizar_cliente", "Os dados do cliente foram alterados com sucesso!");
+           return $this->utilidades->validaRedirecionar( $retorno, $this->getId(), "admin.php?rota=visualizar_pet", "Os dados do pet foram alterados com sucesso!");
         }else{
             return $this->utilidades->mesagemParaUsuario("Erro! CPF não foi infomado.");
         }

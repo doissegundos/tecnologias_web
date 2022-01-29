@@ -380,7 +380,7 @@ if (isset($_SESSION['administrador'])){
     <script src="../js/sb-admin-2.min.js"></script>
 
     <!-- funcoes adicioandas -->
-    <script src="../js/principal.js"></script>
+    <script src="../js/principal1.js"></script>
 
 </body>
 

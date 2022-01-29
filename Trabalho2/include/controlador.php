@@ -20,10 +20,13 @@ if (isset($_GET['rota'])) {
         case "cadastrar_pet":
             include("../include/cadastrarPET.php");
             break;     
-            case "visualizar_pet":
-                include("../include/visualizarPET.php");
-                break;   
-        
+        case "visualizar_pet":
+            include("../include/visualizarPET.php");
+            break;   
+        case "editar_pet":
+            include("../include/editarPET.php");
+            break;
+    
         
      
     }
@@ -69,5 +72,12 @@ if (isset($_POST['formCadastrarCliente'])) {
     $objPet->setNome($_POST['nomePET']);
     $objPet->setCPF($_POST['cpfPET']);
     $objPet->cadastrar();
+
+}
+else if (isset($_POST['formEditarPet'])) {
+    $objPet = new Pet();
+    $objPet->setNome($_POST['nomePet']);
+    $objPet->setID($_POST['idPet']);
+    $objPet->editar();
 
 }

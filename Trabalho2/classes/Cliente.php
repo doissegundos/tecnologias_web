@@ -102,9 +102,9 @@ class Cliente{
 
         if($this->getId()!=null){
             
-            $interacaoMySql = $this->conexaoBD->prepare("UPDATE  cliente set  nome_cliente=?, email_cliente=?, cpf_cliente=? 
+            $interacaoMySql = $this->conexaoBD->prepare("UPDATE  cliente set  nome_cliente=?, email_cliente=?, cpf_cliente=?, celular_cliente=?, rua_cliente=?, cidade_cliente=?, estado_cliente=?
             where id_cliente=?");
-            $interacaoMySql->bind_param('sssi', $this->getNome(),$this->getEmail(),$this->getCPF(),$this->getId());
+            $interacaoMySql->bind_param('sssssssi', $this->getNome(),$this->getEmail(),$this->getCPF(),$this->getCelular(),$this->getRua(),$this->getCidade(),$this->getEstado(),$this->getId());
             $retorno=$interacaoMySql->execute();
             if ($retorno === false) {
                 trigger_error($this->conexaoBD->error, E_USER_ERROR);
@@ -136,9 +136,14 @@ class Cliente{
     }
 
     public function deletar($id){
+        //se for deletar um cliente que tem pet cadastrado, deve ser deletado o pet também. Pois não existe um PET sem dono. 
+        $sql="DELETE from pet where id_cliente=$id";
+        $this->retornoBD=$this->conexaoBD-> query($sql);
         $sql="DELETE from cliente where id_cliente=$id";
         $this->retornoBD=$this->conexaoBD-> query($sql);
         $this->utilidades->validaRedirecionaAcaoDeletar($this->retornoBD,'admin.php?rota=visualizar_cliente','O cliente foi deletado com sucesso!');
     }
   }
+
+
 

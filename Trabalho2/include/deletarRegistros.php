@@ -9,7 +9,6 @@ if(isset($_POST['idClienteDeletar'])){
 }
 
 
-$objPet = new Pet();
 
 if(isset($_POST['idPetDeletar'])){
     echo "<script>alert('Operacao nao foi executada!')</script>";
